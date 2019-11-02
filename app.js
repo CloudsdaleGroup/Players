@@ -11,9 +11,9 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 //Let's Encrypt
-var privateKey = fs.readFileSync(' /etc/letsencrypt/live/player.cloudsdaleradio.com/privkey.pem', 'utf8');
-var certificate = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/cert.pem', 'utf8');
-var ca = fs.readFileSync(' /etc/letsencrypt/live/player.cloudsdaleradio.com/chain.pem', 'utf8');
+var privateKey = fs.readFileSync('./ssl/privkey.pem', 'utf8');
+var certificate = fs.readFileSync('./ssl/cert.pem', 'utf8');
+var ca = fs.readFileSync('./ssl/chain.pem', 'utf8');
 
 credentials = {
 	key: privateKey,
