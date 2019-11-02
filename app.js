@@ -10,6 +10,17 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+//Let's Encrypt
+var privateKey = fs.readFileSync(' /etc/letsencrypt/live/player.cloudsdaleradio.com/privkey.pem', 'utf8');
+var certificate = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/cert.pem', 'utf8');
+var ca = fs.readFileSync(' /etc/letsencrypt/live/player.cloudsdaleradio.com/chain.pem', 'utf8');
+
+credentials = {
+	key: privateKey,
+	cert: certificate,
+	ca: ca
+};
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
