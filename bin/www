@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('cloudsdaleradio-player:server');
 var http = require('http');
+var https = require('https')
+var fs = require('fs')
 
 /**
  * Get port from environment and store in Express.
@@ -21,6 +23,7 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -28,6 +31,14 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+https.createServer({
+  key: fs.readFileSync('./ssl/privkey.pem'),
+  cert: fs.readFileSync('./ssl/cert.pem'),
+  ca: fs.readFileSync('./ssl/chain.pem')
+}, app).listen(443, () => {
+  console.log('https started on port 443.')
+})
 
 /**
  * Normalize a port into a number, string, or false.
