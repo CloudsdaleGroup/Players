@@ -15,7 +15,7 @@ setInterval(function (){
 }, 10000);
 function checkStation(){
 var xhr = new XMLHttpRequest()
-            xhr.open("GET", "http://broadcaster.animefm.co/api/nowplaying/3", true)
+            xhr.open("GET", "https://broadcaster.animefm.co/api/nowplaying/3", true)
             xhr.onreadystatechange = function(channel) {
                 if(xhr.readyState == 4) {
                 var data = JSON.parse(xhr.responseText)
