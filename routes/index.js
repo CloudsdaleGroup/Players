@@ -11,11 +11,11 @@ router.get('/cloudsdaleradio', function(req, res, next) {
 });
 
 router.get('/animefm', function(req, res, next) {
-  res.render('player/animefm', { title: 'Player AnimeFM', layout: 'player' });
+  res.render('player/animefm', { title: 'Player AnimeFM', layout: 'animeFMLay' });
 });
 
 router.get('/rs', function(req, res, next) {
-  res.render('player/rs', { title: 'Player Radio Silence', layout: 'player' });
+  res.render('player/rs', { title: 'Player Radio Silence', layout: 'rsLay' });
 });
 
 module.exports = router;
