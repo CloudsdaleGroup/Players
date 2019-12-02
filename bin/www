@@ -14,7 +14,7 @@ var fs = require('fs')
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '80');
+var port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
 
 /**
@@ -36,7 +36,7 @@ https.createServer({
   key: fs.readFileSync('./ssl/privkey.pem'),
   cert: fs.readFileSync('./ssl/cert.pem'),
   ca: fs.readFileSync('./ssl/chain.pem')
-}, app).listen(443, () => {
+}, app).listen(4433, () => {
   console.log('https started on port 443.')
 })
 
