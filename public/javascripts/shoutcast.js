@@ -74,6 +74,28 @@ var xhr = new XMLHttpRequest()
                     };
                     
                     //NOTIFY
+                    if ('mediaSession' in navigator) {
+                        navigator.mediaSession.metadata = new MediaMetadata({
+                          title: data.now_playing.song.title,
+                          artist: data.now_playing.song.artist,
+                          album: data.now_playing.song.album,
+                          artwork: [
+                            { src: data.now_playing.song.art,  sizes: '96x96',   type: 'image/png' },
+                            { src: data.now_playing.song.art, sizes: '128x128', type: 'image/png' },
+                            { src: data.now_playing.song.art, sizes: '192x192', type: 'image/png' },
+                            { src: data.now_playing.song.art, sizes: '256x256', type: 'image/png' },
+                            { src: data.now_playing.song.art, sizes: '384x384', type: 'image/png' },
+                            { src: data.now_playing.song.art, sizes: '512x512', type: 'image/png' },
+                          ]
+                          
+                        });
+                        playButton.addEventListener('pointerup', function(event) {
+                            playAudio();
+                          });
+                      
+                        navigator.mediaSession.setActionHandler('play', function() {});
+                        navigator.mediaSession.setActionHandler('pause', function() {});
+                      }
                     
                                         
                 }

@@ -21,23 +21,13 @@ var xhr = new XMLHttpRequest()
                     console.log("API OFFLINE :/")
                 }else{
                     var listen = null;
-                    //Now Playing
                     $('.song').html('Now Playing: <br> <strong> ' + data.now_playing.song.text + '</strong>');
                     $('.navsong').text('Now Playing: ' + data.now_playing.song.text);
-                    //Check if requested or not. if true  show it.
                     $('.nowRequest').text('Now Playing: ' + data.now_playing.song.text);
-                    //song cover
                     $('.art').html('<img class="rounded" src="' + data.now_playing.song.art + '"> ');
                     $('.art2').html('<img class="img-rounded" src="' + data.now_playing.song.art +'" width="90px" >');
                     $('.navArt').html('<img src="' + data.now_playing.song.art +'" width="21px" >');
-                    //Listner count
                     $('.listen').html('<i class="fas fa-users"> </i> ' + listen);
-                    //Next Playing
-                    //$('.next').text(data.playing_next.song.text);
-                    //Next song cover
-                    //$('.nextArt').html('<img src="' + data.playing_next.song.art +'"> ');   
-                    //Hisotia
-                    //$('.history').text(data.song_history.song.text);
 
                     //test author & title
                     $('.title').text(data.now_playing.song.title);
@@ -65,7 +55,28 @@ var xhr = new XMLHttpRequest()
                     };
                     
                     //NOTIFY
-                    
+                    if ('mediaSession' in navigator) {
+                        navigator.mediaSession.metadata = new MediaMetadata({
+                          title: data.now_playing.song.title,
+                          artist: data.now_playing.song.artist,
+                          album: data.now_playing.song.album,
+                          artwork: [
+                            { src: data.now_playing.song.art,  sizes: '96x96',   type: 'image/png' },
+                            { src: data.now_playing.song.art, sizes: '128x128', type: 'image/png' },
+                            { src: data.now_playing.song.art, sizes: '192x192', type: 'image/png' },
+                            { src: data.now_playing.song.art, sizes: '256x256', type: 'image/png' },
+                            { src: data.now_playing.song.art, sizes: '384x384', type: 'image/png' },
+                            { src: data.now_playing.song.art, sizes: '512x512', type: 'image/png' },
+                          ]
+                          
+                        });
+                        playButton.addEventListener('pointerup', function(event) {
+                            playAudio();
+                          });
+                      
+                        navigator.mediaSession.setActionHandler('play', function() {});
+                        navigator.mediaSession.setActionHandler('pause', function() {});
+                      }
                                         
                 }
                 if(data.live.is_live === false) {
