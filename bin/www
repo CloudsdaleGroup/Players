@@ -33,9 +33,9 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 https.createServer({
-  key: fs.readFileSync('./ssl/privkey.pem'),
-  cert: fs.readFileSync('./ssl/cert.pem'),
-  ca: fs.readFileSync('./ssl/chain.pem')
+//  key: fs.readFileSync('./ssl/privkey.pem'),
+//  cert: fs.readFileSync('./ssl/cert.pem'),
+//  ca: fs.readFileSync('./ssl/chain.pem')
 }, app).listen(4433, () => {
   console.log('https started on port 443.')
 })

@@ -11,15 +11,15 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 //Let's Encrypt
-var privateKey = fs.readFileSync('./ssl/privkey.pem', 'utf8');
-var certificate = fs.readFileSync('./ssl/cert.pem', 'utf8');
-var ca = fs.readFileSync('./ssl/chain.pem', 'utf8');
-
-credentials = {
-	key: privateKey,
-	cert: certificate,
-	ca: ca
-};
+//var privateKey = fs.readFileSync('./ssl/privkey.pem', 'utf8');
+//var certificate = fs.readFileSync('./ssl/cert.pem', 'utf8');
+//var ca = fs.readFileSync('./ssl/chain.pem', 'utf8');
+//
+//credentials = {
+//	key: privateKey,
+//	cert: certificate,
+//	ca: ca
+//};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
