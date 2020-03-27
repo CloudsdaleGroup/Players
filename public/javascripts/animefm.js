@@ -12,7 +12,7 @@ setInterval(function (){
 }, 10000);
 function checkStation(){
 var xhr = new XMLHttpRequest()
-            xhr.open("GET", "https://broadcaster.animefm.co/api/nowplaying/3", true)
+            xhr.open("GET", "https://maki.animefm.co/api/nowplaying/1", true)
             xhr.onreadystatechange = function(channel) {
                 if(xhr.readyState == 4) {
                 var data = JSON.parse(xhr.responseText)
@@ -70,10 +70,7 @@ var xhr = new XMLHttpRequest()
                           ]
                           
                         });
-                        playButton.addEventListener('pointerup', function(event) {
-                            playAudio();
-                          });
-                      
+                     
                         navigator.mediaSession.setActionHandler('play', function() {});
                         navigator.mediaSession.setActionHandler('pause', function() {});
                       }
